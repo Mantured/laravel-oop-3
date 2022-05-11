@@ -5,9 +5,9 @@
 @section('main-content')
 <main>
     test main prova
+    @dump ($product1)
     @php
-        var_dump($product -> getPrice());
-        echo $product -> getPrice() . ' $'
+        echo $product1 -> getPrice() . ' $';
     @endphp
 </main>
 @endsection
