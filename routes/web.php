@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-}) -> name('Home');
+
 
 
 /**
@@ -35,7 +33,7 @@ class Product
      * @param  mixed $price
      * @return void
      */
-    public function _construct(string $name, string $description = null, float $price)
+    public function __construct(string $name, $description = null, float $price)
     {
         $this -> name = $name;
         $this -> description = $description;
@@ -64,13 +62,29 @@ class Product
 
 
     /**
+     * setDescription
+     *
+     * @param  mixed $description
+     * @return void
+     */
+    public function setDescription($description)
+    {
+        return $this -> description = $description;
+    }
+
+    /**
      * getPrice
      *
      * @return float
      */
     public function getPrice() :float
     {
-        return $this -> price . '$';
+        return $this -> price;
     }
 
 }
+
+Route::get('/', function () {
+    $product = new Product("croccantini", "cibo per cani", 20.33 );
+    return view ('home', ['product' => $product]);
+})-> name('Home');
