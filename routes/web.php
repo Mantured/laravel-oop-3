@@ -393,19 +393,28 @@ class Customer
         }
     }
 
+    /**
+     * getCart
+     *
+     * @return Cart
+     */
     public function getCart(): Cart
     {
         return $this -> cart;
     }
 
 
+    /**
+     * getAmountCart
+     *
+     * @return float
+     */
     public function getAmountCart(): float
     {
         return $this -> cart -> getTotalAmount();
     }
-
-
 }
+
 
 class CreditCard
 {
@@ -598,6 +607,12 @@ class Cart
         array_push($this -> products, $product);
     }
 
+    /*  public function removeProductToCart(Product $product, $id): void
+    {
+        foreach ($this->products as $product) {
+            unset($product -> getSerialNumber() == $id);
+        }
+    } */
     public function getProducts(): array
     {
         return $this -> products;
